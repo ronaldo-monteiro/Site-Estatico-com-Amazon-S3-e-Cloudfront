@@ -3,6 +3,15 @@
 ## Visão Geral
 Este guia mostra como configurar a infraestrutura para hospedar um site estático em um bucket S3 e distribuir seu conteúdo globalmente com o CloudFront. A configuração é realizada utilizando Terraform, uma ferramenta IaC (Infrastructure as Code).
 
+## Arquitetura do projeto
+
+<p align="center">
+  <img src="imagem.gif" alt="Segundo Exemplo do código!">
+</p>
+
+
+
+
 ### Recursos que serão criados
 1. Bucket S3 para armazenar os arquivos do site estático.
 2. Configuração de política de bucket para permitir acesso público ao conteúdo do site.
@@ -50,3 +59,7 @@ resource "aws_s3_bucket_policy" "site_bucket_policy" {
     ]
   })
 }
+
+```
+
+
