@@ -47,7 +47,7 @@ provider "aws" {
 # Criação do bucket S3
 resource "aws_s3_bucket" "example" {
   bucket = "xxxxxxxxxxxx"  # Nome único do bucket (deve ser único globalmente)
-  acl    = "public-read"         # Permite leitura pública para hospedar um site estático
+  acl    = "public-read"   # Permite leitura pública para hospedar um site estático
 
   # Configuração para hospedar site estático
   website {
@@ -64,10 +64,10 @@ resource "aws_s3_bucket" "example" {
 
 # Upload de um arquivo index.html para o bucket
 resource "aws_s3_bucket_object" "example_object" {
-  bucket       = aws_s3_bucket.example.bucket  # Bucket onde o objeto será armazenado
-  key          = "index.html"                  # Nome do arquivo no bucket
+  bucket       = aws_s3_bucket.example.bucket        # Bucket onde o objeto será armazenado
+  key          = "index.html"                        # Nome do arquivo no bucket
   source       = "~/Documents/Ec2 estudo/index.html" # Caminho local do arquivo a ser carregado
-  content_type = "text/html"                   # Tipo de conteúdo do arquivo (HTML)
+  content_type = "text/html"                         # Tipo de conteúdo do arquivo (HTML)
 }
 
 # Adicionando uma política ao bucket para permitir acesso público
@@ -78,10 +78,10 @@ resource "aws_s3_bucket_policy" "example_policy" {
     Version = "2012-10-17"  # Versão da política
     Statement = [
       {
-        Sid       = "PublicReadGetObject"  # Identificador da regra
-        Effect    = "Allow"               # Permissão concedida (Allow)
-        Principal = "*"                   # Permissão para todos os usuários
-        Action    = "s3:GetObject"        # Ação permitida (leitura de objetos)
+        Sid       = "PublicReadGetObject"        # Identificador da regra
+        Effect    = "Allow"                      # Permissão concedida (Allow)
+        Principal = "*"                          # Permissão para todos os usuários
+        Action    = "s3:GetObject"               # Ação permitida (leitura de objetos)
         Resource  = "arn:aws:s3:::xxxxxxxxxx/*"  # nome do bucket (aplica-se a todos os objetos do bucket)
       }
     ]
