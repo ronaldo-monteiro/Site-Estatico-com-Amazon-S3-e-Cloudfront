@@ -87,3 +87,60 @@ resource "aws_s3_bucket_policy" "example_policy" {
     ]
   })
 }
+
+```
+
+
+# Criando a distribuição do CloudFront
+
+```hcl
+resource "aws_cloudfront_distribution" "example" {
+  origin {
+    domain_name = aws_s3_bucket.example.bucket_regional_domain_name # Endereço do bucket S3
+    origin_id   = "S3-hospedagem-site-s3"
+
+    # Configuração para integrar o CloudFront com o bucket S3
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.example.cloudfront_access_identity_path
+    }
+  }
+
+  enabled             = true               # Habilita a distribuição
+  default_root_object = "index.html"       # Documento padrão da distribuição
+
+  # Configuração de comportamento padrão
+  default_cache_behavior {
+    allowed_methods  = ["GET", "HEAD"]     # Métodos HTTP permitidos
+    cached_methods   = ["GET", "HEAD"]     # Métodos que podem ser armazenados em cache
+    target_origin_id = "xxxxxxxxxxxxxxx"
+
+    viewer_protocol_policy = "redirect-to-https" # Redireciona solicitações HTTP para HTTPS
+
+    forwarded_values {
+      query_string = false               # Não encaminha parâmetros de consulta
+      cookies {
+        forward = "none"                 # Não encaminha cookies
+      }
+    }
+
+    min_ttl     = 0                      # Tempo de vida mínimo do cache
+    default_ttl = 3600                   # Tempo de vida padrão (1 hora)
+    max_ttl     = 86400                  # Tempo de vida máximo (1 dia)
+  }
+
+  # Configuração de HTTPS
+  viewer_certificate {
+    cloudfront_default_certificate = true # Usa o certificado padrão do CloudFront
+  }
+
+  # Tags para organização
+  tags = {
+    Environment = "Production"
+    Project     = "StaticWebsite"
+  }
+}
+
+# Criando uma identidade de acesso para o CloudFront acessar o bucket S3
+resource "aws_cloudfront_origin_access_identity" "example" {
+  comment = "Acesso do CloudFront ao bucket hospedagem-site-s3"
+}
