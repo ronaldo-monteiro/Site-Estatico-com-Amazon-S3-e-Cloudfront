@@ -172,7 +172,7 @@ A hospedagem de sites estáticos no **Amazon S3** com **CloudFront** é uma solu
 
 ## Clique no link abaixo e veja o resultado!
 
-[<h2>Visite o site](https://hospedagem-site-s3.s3.us-east-1.amazonaws.com/index.html)
+[<h2>Visite o site</h2>](https://hospedagem-site-s3.s3.us-east-1.amazonaws.com/index.html)
 
 
 
