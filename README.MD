@@ -144,3 +144,41 @@ resource "aws_cloudfront_distribution" "example" {
 resource "aws_cloudfront_origin_access_identity" "example" {
   comment = "Acesso do CloudFront ao bucket hospedagem-site-s3"
 }
+```
+<br><br>
+
+# Resumo de todo projeto
+
+O processo de hospedar um site estático no **Amazon S3** combinado com a **CloudFront** fornece uma solução robusta e escalável para disponibilizar conteúdo na web. Aqui está um resumo dos resultados dessa hospedagem:
+
+## O que foi feito:
+- **Bucket S3**: Criei um bucket no Amazon S3 com a configuração de **hospedagem de site estático**. O bucket contém os arquivos essenciais, como `index.html` (página inicial) e `error.html` (página de erro).
+  
+- **Política de Acesso**: Configurei uma política de bucket permitindo acesso público aos objetos, tornando o site acessível por qualquer usuário com o link público.
+
+- **CloudFront**: Utilizamos o **Amazon CloudFront**, a rede de distribuição de conteúdo (CDN) da AWS, para distribuir o conteúdo do bucket S3 globalmente com alta performance e baixa latência. CloudFront ajuda a acelerar a entrega de conteúdo, melhorando a experiência do usuário.
+
+- **HTTPS**: A configuração de HTTPS foi ativada para garantir que as conexões sejam seguras. Utilizamos o **certificado SSL padrão do CloudFront**.
+
+- **Redirecionamento para HTTPS**: Configuração do CloudFront para redirecionar todas as solicitações HTTP para HTTPS, garantindo maior segurança para os usuários.
+
+## Resultados:
+- O site agora está hospedado de forma **segura e eficiente**, com conteúdo entregue rapidamente aos usuários em qualquer parte do mundo.
+- O uso do **CloudFront** oferece cache de conteúdo, o que reduz a carga no servidor de origem (bucket S3), acelerando o tempo de resposta para os usuários.
+- O **CloudFront** também garante alta disponibilidade e resiliência, com múltiplas localizações de borda espalhadas globalmente.
+  
+## Benefícios:
+- **Escalabilidade**: A AWS automaticamente escala para atender grandes volumes de tráfego sem necessidade de configuração adicional.
+- **Custo-benefício**: Apenas paga-se pelo armazenamento do S3 e pela largura de banda do CloudFront, sem necessidade de servidores ou manutenção de infraestrutura.
+- **Segurança**: A comunicação HTTPS garante que os dados dos usuários sejam criptografados, e o acesso ao bucket S3 é controlado por meio de políticas de acesso específicas.
+
+## Conclusão:
+A hospedagem de sites estáticos no **Amazon S3** com **CloudFront** é uma solução altamente eficiente, segura e escalável, perfeita para sites que exigem alta disponibilidade e rápido tempo de carregamento, com a vantagem adicional de custo otimizado.
+
+
+
+
+## Clique no link abaixo e veja o site!
+
+<a href="https://hospedagem-site-s3.s3.us-east-1.amazonaws.com/index.html"><h1>Visite o Site</a>
+
