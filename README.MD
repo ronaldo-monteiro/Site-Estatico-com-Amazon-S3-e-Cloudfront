@@ -32,34 +32,58 @@ Este guia mostra como configurar a infraestrutura para hospedar um site estátic
 
 ### 1. Configurar o Bucket S3
 
-Crie um bucket S3 para armazenar os arquivos do site estático.
+# Configuração de Bucket S3 para Hospedagem de Site Estático com Terraform
+
+Este código configura um bucket S3 na AWS, utilizando Terraform, para hospedar um site estático. Ele inclui a criação do bucket, um arquivo de exemplo (`index.html`), e a aplicação de uma política de acesso público ao bucket.
+
+## Código Terraform
 
 ```hcl
-resource "aws_s3_bucket" "site_bucket" {
-  bucket        = "meu-site-estatico"
-  acl           = "public-read"
+# Definindo o provedor AWS
+provider "aws" {
+  region = "us-east-1"  # Define a região onde o bucket será criado
+}
+
+# Criação do bucket S3
+resource "aws_s3_bucket" "example" {
+  bucket = "xxxxxxxxxxxx"  # Nome único do bucket (deve ser único globalmente)
+  acl    = "public-read"         # Permite leitura pública para hospedar um site estático
+
+  # Configuração para hospedar site estático
   website {
-    index_document = "index.html"
-    error_document = "error.html"
+    index_document = "index.html"  # Documento principal do site
+    error_document = "error.html"  # Documento exibido em caso de erro
+  }
+
+  # Tags para identificar o bucket
+  tags = {
+    Name        = "MeuBucketEstático"  # Nome amigável
+    Environment = "Produção"           # Ambiente associado ao bucket
   }
 }
 
-resource "aws_s3_bucket_policy" "site_bucket_policy" {
-  bucket = aws_s3_bucket.site_bucket.id
+# Upload de um arquivo index.html para o bucket
+resource "aws_s3_bucket_object" "example_object" {
+  bucket       = aws_s3_bucket.example.bucket  # Bucket onde o objeto será armazenado
+  key          = "index.html"                  # Nome do arquivo no bucket
+  source       = "~/Documents/Ec2 estudo/index.html" # Caminho local do arquivo a ser carregado
+  content_type = "text/html"                   # Tipo de conteúdo do arquivo (HTML)
+}
+
+# Adicionando uma política ao bucket para permitir acesso público
+resource "aws_s3_bucket_policy" "example_policy" {
+  bucket = aws_s3_bucket.example.id  # Referência ao bucket criado
 
   policy = jsonencode({
-    Version = "2012-10-17"
+    Version = "2012-10-17"  # Versão da política
     Statement = [
       {
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:GetObject"
-        Resource  = "${aws_s3_bucket.site_bucket.arn}/*"
+        Sid       = "PublicReadGetObject"  # Identificador da regra
+        Effect    = "Allow"               # Permissão concedida (Allow)
+        Principal = "*"                   # Permissão para todos os usuários
+        Action    = "s3:GetObject"        # Ação permitida (leitura de objetos)
+        Resource  = "arn:aws:s3:::xxxxxxxxxx/*"  # nome do bucket (aplica-se a todos os objetos do bucket)
       }
     ]
   })
 }
-
-```
-
-
