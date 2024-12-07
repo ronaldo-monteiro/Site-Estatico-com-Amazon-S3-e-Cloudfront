@@ -5,7 +5,7 @@ Este projeto mostra como configurar a infraestrutura para hospedar um site está
 ## Arquitetura do projeto
 
 <p align="center">
-  <img src="imagem.gif" alt="Segundo Exemplo do código!">
+  <img src="nvideo.gif" alt="Segundo Exemplo do código!">
 </p>
 
 
@@ -171,7 +171,7 @@ O processo de hospedar um site estático no **Amazon S3** combinado com a **Clou
 A hospedagem de sites estáticos no **Amazon S3** com **CloudFront** é uma solução altamente eficiente, segura e escalável, perfeita para sites que exigem alta disponibilidade e rápido tempo de carregamento, com a vantagem adicional de custo otimizado.
 
 ## Clique no link abaixo e veja o resultado!
-
+=====>>>> 
 [Visite o site](https://hospedagem-site-s3.s3.us-east-1.amazonaws.com/index.html)
 
 
