@@ -20,11 +20,6 @@ Este projeto mostra como configurar a infraestrutura para hospedar um site está
 
 ---
 
-
----
-
-
-
 ### 1. Configurar o Bucket S3
 
 # Configuração de Bucket S3 para Hospedagem de Site Estático com Terraform
