@@ -1,4 +1,4 @@
-# Hospedando um Site Estático em um Bucket S3 com CloudFront Usando Terraform
+# Hospedando um Site Estático em um Bucket S3 com CloudFront Usando Terraform.
 
 ## Visão Geral
 Este projeto mostra como configurar a infraestrutura para hospedar um site estático em um bucket S3 e distribuir seu conteúdo globalmente com o CloudFront. Utilizei o Terraform para a construção de toda a infraestrutura.
@@ -79,7 +79,7 @@ resource "aws_s3_bucket_policy" "example_policy" {
 ```
 
 
-# Criando a distribuição do CloudFront
+# Criando a distribuição do CloudFront.
 
 ```hcl
 resource "aws_cloudfront_distribution" "example" {
@@ -135,7 +135,7 @@ resource "aws_cloudfront_origin_access_identity" "example" {
 ```
 <br><br>
 
-# Resumo de todo projeto
+# Resumo de todo projeto.
 
 O processo de hospedar um site estático no **Amazon S3** combinado com a **CloudFront** fornece uma solução robusta e escalável para disponibilizar conteúdo na web. Aqui está um resumo dos resultados dessa hospedagem:
 
