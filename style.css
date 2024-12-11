@@ -1,0 +1,19 @@
+<!-- Imagem do lado direito -->
+<div class="image-side">
+  <div class="image-container">
+    <img src="ftronaldo.png" alt="Imagem Lateral">
+  </div>
+  <!-- Logotipos das redes sociais -->
+  <div class="social-icons">
+    <a href="https://instagram.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="social-icon">
+    </a>
+    <a href="https://twitter.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/X_logo.svg" alt="X" class="social-icon">
+    </a>
+    <a href="https://linkedin.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="social-icon">
+    </a>
+  </div>
+</div>
+

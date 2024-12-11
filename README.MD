@@ -9,8 +9,6 @@ Este projeto mostra como configurar a infraestrutura para hospedar um site está
 </p>
 
 
-
-
 ### Recursos que serão criados
 1. Bucket S3 para armazenar os arquivos do site estático.
 2. Configuração de política de bucket para permitir acesso público ao conteúdo do site.
@@ -168,7 +166,7 @@ A hospedagem de sites estáticos no **Amazon S3** com **CloudFront** é uma solu
 ## Clique no link abaixo e veja o resultado!
 =====>>>> 
 [Visite o site](https://hospedagem-site-s3.s3.us-east-1.amazonaws.com/index.html)
-
+<<<======
 
 
 

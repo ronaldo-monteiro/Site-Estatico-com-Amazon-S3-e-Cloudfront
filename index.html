@@ -1,14 +1,202 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teste</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio</title>
+  <!-- Link para o Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Estilo do corpo e do contêiner principal */
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1f2122; /* Cor de fundo de todo o site */
+      color: #fff; /* Cor do texto para contraste com o fundo escuro */
+    }
+
+    /* Cabeçalho com ícones e título */
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #1f2122; /* Fundo do cabeçalho */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    /* Ícones alinhados ao lado direito */
+    .header .social-icons {
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .header .social-icons a {
+      margin-left: 5px;
+      text-decoration: none;
+      color: #fff; /* Cor dos ícones */
+      font-size: 24px;
+      transition: color 0.3s;
+    }
+
+    .header .social-icons a:hover {
+      color: #007BFF; /* Cor ao passar o mouse */
+    }
+
+    /* Contêiner do conteúdo principal */
+    .main-content {
+      display: flex;
+      flex: 1;
+    }
+
+    /* Contêiner do carrossel */
+    .carousel-container {
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10%;
+      background-color: #1f2122; /* Fundo do carrossel */
+    }
+
+    /* Contêiner das imagens do carrossel */
+    .carousel-images {
+      width: 100%;
+      max-width: 300px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel-images img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.5s ease;
+    }
+
+    /* Estilo das bolinhas de navegação */
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .indicator {
+      width: 15px;
+      height: 15px;
+      margin: 0 5px;
+      border-radius: 50%;
+      background-color: #bbb;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .indicator.active {
+      background-color: #007BFF;
+    }
+
+    /* Estilo da imagem lateral */
+    .image-side {
+      width: 23%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #1f2122; /* Fundo da imagem lateral */
+      padding: 10px;
+      margin-left: 20px; /* Move o contêiner da imagem para a direita */
+    }
+
+    .image-side img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 10px;
+    }
+  </style>
 </head>
-
-<h1>Meu site na AWS</h1>
-
 <body>
-    
+
+  <!-- Cabeçalho -->
+  <header class="header">
+    <h1>Meu Portfólio</h1>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/ronaldogtr" target="_blank">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.twitter.com/ronaldogtr" target="_blank">
+        <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.linkedin.com/ronaldo-monteiro" target="_blank">
+        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <div class="main-content">
+    <!-- Contêiner do carrossel -->
+    <div class="carousel-container">
+      <!-- Carrossel de Imagens -->
+      <div class="carousel-images">
+        <img src="https://via.placeholder.com/400x700/FF0000/FFFFFF?text=Imagem+1" alt="Imagem 1">
+        <img src="https://via.placeholder.com/400x700/00FF00/FFFFFF?text=Imagem+2" alt="Imagem 2" style="display: none;">
+        <img src="https://via.placeholder.com/400x700/0000FF/FFFFFF?text=Imagem+3" alt="Imagem 3" style="display: none;">
+      </div>
+      
+      <!-- Bolinhas de navegação -->
+      <div class="carousel-indicators">
+        <div class="indicator" onclick="showImage(0)"></div>
+        <div class="indicator" onclick="showImage(1)"></div>
+        <div class="indicator" onclick="showImage(2)"></div>
+      </div>
+    </div>
+
+    <!-- Imagem do lado direito -->
+    <div class="image-side">
+      <img src="ftronaldo.png" alt="Imagem Lateral">
+    </div>
+  </div>
+
+  <!-- Script JavaScript para o carrossel -->
+  <script>
+    let currentImageIndex = 0;
+    const images = document.querySelectorAll('.carousel-images img');
+    const indicators = document.querySelectorAll('.indicator');
+    const totalImages = images.length;
+
+    function showImage(index) {
+      // Esconde todas as imagens
+      images.forEach(img => img.style.display = 'none');
+      // Exibe a imagem selecionada
+      images[index].style.display = 'block';
+      
+      // Atualiza as bolinhas de navegação
+      indicators.forEach(indicator => indicator.classList.remove('active'));
+      indicators[index].classList.add('active');
+
+      currentImageIndex = index;
+    }
+
+    // Exibe a primeira imagem no carregamento
+    showImage(currentImageIndex);
+
+    // Troca de imagem automaticamente a cada 5 segundos (5000 milissegundos)
+    setInterval(() => {
+      currentImageIndex = (currentImageIndex + 1) % totalImages;
+      showImage(currentImageIndex);
+    }, 5000);
+  </script>
+
 </body>
 </html>
